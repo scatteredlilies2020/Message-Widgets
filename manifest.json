@@ -1,0 +1,11 @@
+{
+    "display_name": "Message Widgets",
+    "loading_order": 1,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "candy",
+    "version": "1.0.0",
+    "auto_update": false
+}

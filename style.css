@@ -1,0 +1,28 @@
+.mes_text button[data-title] {
+    font-size: 0;
+}
+
+.mes_text button[data-title]::after {
+    content: attr(data-title);
+    font-size: var(--mainFontSize);
+}
+
+.mes_text button[data-title] > i,
+.mes_text button[data-title] > svg {
+    font-size: var(--mainFontSize);
+}
+
+.clickable-inputs-prompt-heading {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.clickable-inputs-prompt-heading label {
+    margin: 0;
+}
+
+.clickable-inputs-prompt-heading .menu_button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}

@@ -1,0 +1,27 @@
+<div id="clickable_inputs_settings" class="clickable-inputs-settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b data-i18n="Message Widgets">Message Widgets</b>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+        </div>
+
+        <div class="inline-drawer-content">
+            <label class="flex-container">
+                <input type="checkbox" id="clickable_inputs_enabled">
+                <span data-i18n="Enable">Enable</span>
+            </label>
+            <label class="flex-container">
+                <input type="checkbox" id="clickable_inputs_prompt_enabled">
+                <span data-i18n="Append instructions to prompt">Append instructions to prompt</span>
+            </label>
+            <div class="clickable-inputs-prompt-heading flex-container justifyspacebetween alignitemscenter">
+                <label for="clickable_inputs_prompt" data-i18n="Instructions">Instructions</label>
+                <button type="button" class="menu_button" id="clickable_inputs_prompt_restore" title="Restore default prompt" data-i18n="[title]Restore default prompt">
+                    <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+                    <span data-i18n="Restore default">Restore default</span>
+                </button>
+            </div>
+            <textarea id="clickable_inputs_prompt" class="text_pole textarea_compact" rows="7" placeholder="Prompt" data-i18n="[placeholder]Prompt"></textarea>
+        </div>
+    </div>
+</div>
