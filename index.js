@@ -272,7 +272,7 @@ async function initSettings() {
     if (!container || document.getElementById("clickable_inputs_settings")) return;
 
     try {
-        const html = await renderExtensionTemplateAsync("third-party/Clickable", "settings");
+        const html = await renderExtensionTemplateAsync("third-party/Message-Widgets", "settings");
         container.insertAdjacentHTML("beforeend", html);
     } catch (error) {
         console.error("Message Widgets: failed to render settings", error);
