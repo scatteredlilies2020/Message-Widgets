@@ -12,7 +12,7 @@ Just use the installer.
 
 ### Usage
 
-Use semantic HTML controls inside `data-clickable-scope` or `form data-clickable-form`. Buttons inside a scope are interactive; standalone actions and custom widgets can opt in with `data-clickable`. Custom widgets should use `role="button" tabindex="0"` for keyboard access. Text fields, sliders, checkboxes, radio buttons, dropdowns, textareas, and native disclosure widgets remain usable without changing presets or the normal composer. Add `data-submit` to a button when its form values should be sent with the action. Add `data-submit-on-enter` to a specific text field to opt in to Enter-to-submit.
+Use semantic HTML controls inside `data-clickable-scope` or `form data-clickable-form`. Standard buttons and submit controls in assistant messages are interactive automatically; standalone custom widgets can opt in with `data-clickable`. Custom widgets should use `role="button" tabindex="0"` for keyboard access. Text fields, sliders, checkboxes, radio buttons, dropdowns, textareas, and native disclosure widgets remain usable without changing presets or the normal composer. Add `data-submit` to a button when its form values should be sent with the action. Add `data-submit-on-enter` to a specific text field to opt in to Enter-to-submit.
 
 ## Prerequisites
 

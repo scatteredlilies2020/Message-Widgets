@@ -17,7 +17,7 @@ const ALTERNATE_SUBMIT_ATTRIBUTE = "data-clickable-submit";
 const SCOPE_SELECTOR = "[data-clickable-scope], form[data-clickable-form]";
 
 const DEFAULT_INSTRUCTIONS = `<instructions>
-**INTERACTIVE CONTROLS**: Put related controls inside a \`<form data-clickable-form>\` or an element with \`data-clickable-scope\`. Use semantic HTML controls wherever possible: \`button\`, \`input\`, \`select\`, \`textarea\`, \`details\`, and \`a\`. Buttons inside an interactive scope are actions. For buttons outside a scope, add \`data-clickable\` so they are explicitly interactive. Keep related inputs together and use \`<label>\` with a \`for\` attribute.
+**INTERACTIVE CONTROLS**: Use semantic HTML controls wherever possible: \`button\`, \`input\`, \`select\`, \`textarea\`, \`details\`, and \`a\`. Standard buttons and submit controls in the assistant message are actions automatically. Put related controls inside a \`<form data-clickable-form>\` or an element with \`data-clickable-scope\` when a submit action should collect only that group of inputs. Custom widgets and standalone non-button actions must use \`data-clickable\`; use \`role="button" tabindex="0"\` for keyboard access. Keep related inputs together and use \`<label>\` with a \`for\` attribute.
 \`\`\`
 <form data-clickable-form>
   <label for="name">Name</label>
@@ -102,10 +102,7 @@ function isActionControl(element) {
     if (element.hasAttribute("data-clickable")) return true;
     if (!element.matches("button, input[type=button], input[type=submit], [role=button], a")) return false;
     if (element.matches("a")) return element.hasAttribute("data-clickable");
-    if (element.closest(SCOPE_SELECTOR)) return true;
-    return element.hasAttribute("data-clickable")
-        || element.hasAttribute("data-title")
-        || isSubmitButton(element);
+    return true;
 }
 
 function cleanText(value) {
