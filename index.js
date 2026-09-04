@@ -30,7 +30,7 @@ const DEFAULT_INSTRUCTIONS = `<instructions>
   <button data-submit>Continue</button>
 </form>
 \`\`\`
-Use \`data-submit\` when a button should include labelled input values in its message. Use \`data-submit-on-enter\` only when pressing Enter in a specific text field should activate the form submit button. Links should navigate normally unless they have \`data-clickable\`.
+Use \`data-submit\` when a button should include labelled input values in its message. Use \`data-submit-on-enter\` only when pressing Enter in a specific text field should activate the form submit button. Links and custom widgets should remain normal HTML unless explicitly marked \`data-clickable\`; for keyboard access, custom widgets should also use \`role="button" tabindex="0"\`.
 You may override the text sent/displayed on an action button with \`data-title\`.
 </instructions>`;
 
@@ -99,6 +99,7 @@ function isIgnoredControl(element) {
 
 function isActionControl(element) {
     if (!(element instanceof HTMLElement)) return false;
+    if (element.hasAttribute("data-clickable")) return true;
     if (!element.matches("button, input[type=button], input[type=submit], [role=button], a")) return false;
     if (element.matches("a")) return element.hasAttribute("data-clickable");
     if (element.closest(SCOPE_SELECTOR)) return true;
@@ -238,7 +239,7 @@ async function submitButton(button, root, event) {
 
 function handleClick(event) {
     if (!isEnabled()) return;
-    const control = event.target.closest?.("button, input[type=button], input[type=submit], [role=button], a");
+    const control = event.target.closest?.("[data-clickable], button, input[type=button], input[type=submit], [role=button], a");
     const root = getMessageRoot(control);
     if (!control || !root || !isAssistantMessage(root) || !isActionControl(control) || isIgnoredControl(control)) return;
     void submitButton(control, root, event);
@@ -260,7 +261,7 @@ function handleKeydown(event) {
         return;
     }
 
-    if (target.matches?.("[role=button][data-clickable], a[data-clickable]") && (event.key === "Enter" || event.key === " ")) {
+    if (target.matches?.("[data-clickable][role=button], [data-clickable][tabindex], a[data-clickable]") && (event.key === "Enter" || event.key === " ")) {
         event.preventDefault();
         void submitButton(target, root, event);
     }
